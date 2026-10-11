@@ -19,6 +19,9 @@ $BIN Init --prefix Nat.add_comm -o "$T/b.ndjson"; cmp -s "$T/a.ndjson" "$T/b.ndj
 $BIN Init -- Nat.add_comm -o "$T/c.ndjson" 2>/dev/null || $BIN -o "$T/c.ndjson" Init -- Nat.add_comm
 $BIN --validate "$T/c.ndjson" 2>/dev/null; check "validate single-root export" $? 0
 
+# explicit root that does not exist is an error, not an empty export
+$BIN Init -- Nat.no_such_constant_xyz -o "$T/none.ndjson" 2>/dev/null; check "unknown constant is an error" $? 1
+
 # structural negative: delete a name line
 python3 -I - "$T/a.ndjson" "$T/bad1.ndjson" "$T/bad2.ndjson" <<'PY'
 import json,sys

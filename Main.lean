@@ -77,7 +77,12 @@ def main (args : List String) : IO UInt32 := do
   initSearchPath (← findSysroot)
   let env ← importModules (mods.map fun m => { module := m.toName : Import }).toArray {}
   let mut roots := ((env.constants.toList.map (·.1)).toArray.qsort Name.lt).toList
-  if !names.isEmpty then roots := names.map String.toName
+  if !names.isEmpty then
+    roots := names.map String.toName
+    for n in roots do
+      unless env.contains n do
+        IO.eprintln s!"unknown constant: {n}"
+        return 1
   let startsWith (ps : List String) (n : Name) := ps.any fun p => p.isPrefixOf n.toString
   if !o.prefixes.isEmpty then roots := roots.filter (startsWith o.prefixes)
   if !o.excludes.isEmpty then roots := roots.filter (!startsWith o.excludes ·)

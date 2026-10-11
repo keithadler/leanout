@@ -1,0 +1,7 @@
+leanout
+Copyright 2026 Keith Adler
+
+Licensed under the Apache License, Version 2.0.
+
+This exporter was written from the published lean4export NDJSON format description (version 3.1.0)
+alone. No source code of any other exporter was consulted.

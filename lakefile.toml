@@ -1,0 +1,13 @@
+name = "leanout"
+defaultTargets = ["leanout"]
+
+[[lean_lib]]
+name = "LeanOut"
+
+[[lean_exe]]
+name = "leanout"
+root = "Main"
+
+[[lean_lib]]
+name = "Fixtures"
+srcDir = "tests/fixtures"

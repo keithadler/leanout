@@ -10,7 +10,7 @@ own, [Tenet](https://github.com/keithadler/tenet), and so on) can then re-check 
 ## Build and use
 
 Needs [elan](https://github.com/leanprover/elan). Supported toolchains: Lean 4.33.0 and later
-(built and smoke-tested on 4.33.0, 4.33.1, 4.34.0, 4.34.1, 4.35.0-rc4 and a 2026-10-08 nightly).
+(built and smoke-tested on 4.33.0, 4.33.1, 4.34.0, 4.34.1, 4.35.0-rc4, 4.35.0 and a 2026-10-08 nightly).
 
     lake build
     .lake/build/bin/leanout Init > init.ndjson               # a module and everything it imports
